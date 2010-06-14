@@ -13,11 +13,11 @@ filetype plugin on
 let g:FindFileIgnore = ['*.o', '*.pyc', '*/tmp/*', '*/.git/*']
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-" JJM: Any changes to colorscheme will trigger this back on
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " Show trailing whitepace and spaces before a tab:
 match ExtraWhitespace /\s\+$\| \+\ze\t/
+" JJM: Any changes to colorscheme will trigger this back on
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
 " Add documentation for project plugin
 helptags ~/.vim/doc
@@ -37,8 +37,6 @@ filetype plugin on
 filetype indent on
 
 if has("gui_running")
-    " Turn off the menu bar.
-    " set guioptions=egmrt
     "Set the font and size
     set guifont=Consolas:h18
     " Hide toolbar
@@ -50,26 +48,24 @@ set spell
 set spelllang=en
 set spellsuggest=9 "show only 9 suggestions for misspelled words
 
+set bs=2 "set backspace to be able to delete previous characters
 " What's this do?
 set wm=4
 " Set shift width to 4
 set sw=4
-set tabstop=4
 
-set bs=2 "set backspace to be able to delete previous characters
+" Turn on smart indent
+set tabstop=4 "set tab character to 4 characters
+set expandtab "turn tabs into whitespace
+set shiftwidth=4 "indent width for autoindent
+set smartindent
+filetype indent on "indent depends on filetype
 
 " Enable line numbering, taking up 6 spaces
 set number
 
 " Turn off word wrapping
 set wrap!
-
-" Turn on smart indent
-set smartindent
-set tabstop=4 "set tab character to 4 characters
-set expandtab "turn tabs into whitespace
-set shiftwidth=4 "indent width for autoindent
-filetype indent on "indent depends on filetype
 
 " Turn on incremental search with ignore case (except explicit caps)
 set incsearch
@@ -92,7 +88,7 @@ set fdm=indent
 nnoremap <space> za
 
 " Hide buffer when not in window (to prevent relogin with FTP edit)
-set bufhidden=hide
+" set bufhidden=hide
 
 " Have 3 lines of offset (or buffer) when scrolling
 set scrolloff=3
