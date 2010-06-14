@@ -42,6 +42,7 @@ set wm=4
 
 set nocompatible
 set bs=2 "set backspace to be able to delete previous characters
+
 " Enable line numbering, taking up 6 spaces
 set number
 
