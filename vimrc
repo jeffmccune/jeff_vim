@@ -2,6 +2,8 @@
 " mccune.jeff@gmail.com
 " 0xEFF on Twitter
 
+set nocompatible
+
 " Find File plugin, quickly find a file
 " FC .<CR> (Cache the directory)
 " FF<CR> (Find File)
@@ -47,8 +49,10 @@ set spellsuggest=9 "show only 9 suggestions for misspelled words
 
 " What's this do?
 set wm=4
+" Set shift width to 4
+set sw=4
+set tabstop=4
 
-set nocompatible
 set bs=2 "set backspace to be able to delete previous characters
 
 " Enable line numbering, taking up 6 spaces
