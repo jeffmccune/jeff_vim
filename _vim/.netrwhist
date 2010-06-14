@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/jeff/customization/ruby/closures'
+let g:netrw_dirhist_2='/Users/jeff/customization/ruby'
+let g:netrw_dirhist_3='/Users/jeff/customization'
+let g:netrw_dirhist_4='/Users/jeff'
+let g:netrw_dirhist_5='/Users/jeff/customization'
+let g:netrw_dirhist_6='/Users/jeff/customization/shell'
+let g:netrw_dirhist_7='/Users/jeff/customization'
+let g:netrw_dirhist_8='/Users/jeff/foo'
+let g:netrw_dirhist_9='/Users/jeff/customization/vim'
