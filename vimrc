@@ -11,6 +11,8 @@ match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " Turn on search highlighting
 set hlsearch
+" Turn on incremental search
+set incsearch
 
 " Shift movement and selection Mac behavior.  Less vim like.
 if has("gui_macvim")
