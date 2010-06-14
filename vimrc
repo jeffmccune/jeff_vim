@@ -9,6 +9,9 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " Show trailing whitepace and spaces before a tab:
 match ExtraWhitespace /\s\+$\| \+\ze\t/
 
+" Add documentation for project plugin
+helptags ~/.vim/doc
+
 " Turn on search highlighting
 set hlsearch
 " Turn on incremental search
