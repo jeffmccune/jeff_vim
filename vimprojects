@@ -1,0 +1,4 @@
+project_entry ::=
+    Puppet=~/plabs/puppet [CD=~/plabs] {
+    }
+

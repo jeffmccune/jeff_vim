@@ -2,6 +2,11 @@
 " mccune.jeff@gmail.com
 " 0xEFF on Twitter
 
+" Find File plugin, quickly find a file
+" FC .<CR> (Cache the directory)
+" FF<CR> (Find File)
+let g:FindFileIgnore = ['*.o', '*.pyc', '*/tmp/*', '*/.git/*']
+
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " JJM: Any changes to colorscheme will trigger this back on
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
