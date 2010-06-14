@@ -4,6 +4,9 @@
 
 set nocompatible
 
+" SnipMate plugin
+filetype plugin on
+
 " Find File plugin, quickly find a file
 " FC .<CR> (Cache the directory)
 " FF<CR> (Find File)
