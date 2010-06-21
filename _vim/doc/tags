@@ -92,6 +92,7 @@ NERD_tree.txt	NERD_tree.txt	/*NERD_tree.txt*
 ResetSnippets()	snipMate.txt	/*ResetSnippets()*
 cs	surround.txt	/*cs*
 ds	surround.txt	/*ds*
+ft-gitcommit-plugin	ft-gitcommit-plugin.txt	/*ft-gitcommit-plugin*
 g:snippets_dir	snipMate.txt	/*g:snippets_dir*
 g:snips_author	snipMate.txt	/*g:snips_author*
 i_CTRL-G_S	surround.txt	/*i_CTRL-G_S*
