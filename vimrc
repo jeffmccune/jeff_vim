@@ -49,10 +49,10 @@ set spelllang=en
 set spellsuggest=9 "show only 9 suggestions for misspelled words
 
 set bs=2 "set backspace to be able to delete previous characters
-" What's this do?
-set wm=4
-" Set shift width to 4
-set sw=4
+" set wrapmargin (Generally unrecommended)
+" set wm=4
+" Set shiftwidth to 4 (aka sw)
+set shiftwidth=4
 
 " Turn on smart indent
 set tabstop=4 "set tab character to 4 characters
@@ -64,8 +64,8 @@ filetype indent on "indent depends on filetype
 " Enable line numbering, taking up 6 spaces
 set number
 
-" Turn off word wrapping
-set wrap!
+" Turn on word wrapping (Visually)
+" set wrap
 
 " Turn on incremental search with ignore case (except explicit caps)
 set incsearch
@@ -76,9 +76,9 @@ set smartcase
 " set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 
 " http://www.linux.com/archive/feature/120126
-:set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
+set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}\ %{&fo}]\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
 " Always show the status line
-:set laststatus=2
+set laststatus=2
 
 " Set color scheme
 set t_Co=256
@@ -93,7 +93,7 @@ set fdm=indent
 nnoremap <space> za
 
 " Hide buffer when not in window (to prevent relogin with FTP edit)
-" set bufhidden=hide
+set bufhidden=hide
 
 " Have 3 lines of offset (or buffer) when scrolling
 set scrolloff=3
