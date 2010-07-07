@@ -16,14 +16,38 @@ snippet case
 	    }
 	}${6}
 snippet class
-	class ${1:myclass} {
+	# Class: ${1:myclass}
+	#
+	#   ${2:class description goes here.}
+	#
+	# Parameters:
+	#
+	# Actions:
+	#
+	# Requires:
+	#
+	# Sample Usage:
+	#
+	class $1 {
 		$module = "$1"
-	    ${2:# statements}
+	    ${3:# statements}
 	}
 snippet class::
-	class ${1:someclass}::${2:myclass} inherits ${3:$1} {
+	# Class: ${1:parentclass}::${2:myclass}
+	#
+	#   ${3:class description goes here.}
+	#
+	# Parameters:
+	#
+	# Actions:
+	#
+	# Requires:
+	#
+	# Sample Usage:
+	#
+	class $1::$2 inherits $1 {
 		$module = "$1"
-		${2:# statements}
+		${3:# statements}
 	}
 snippet File
 	File {
