@@ -51,13 +51,11 @@ set spellsuggest=9 "show only 9 suggestions for misspelled words
 set bs=2 "set backspace to be able to delete previous characters
 " set wrapmargin (Generally unrecommended)
 " set wm=4
-" Set shiftwidth to 4 (aka sw)
-set shiftwidth=4
 
 " Turn on smart indent
-set tabstop=4 "set tab character to 4 characters
+set tabstop=2 "set tab character to 4 characters
 set expandtab "turn tabs into whitespace
-set shiftwidth=4 "indent width for autoindent
+set shiftwidth=2 "indent width for autoindent
 set smartindent
 filetype indent on "indent depends on filetype
 
@@ -74,7 +72,7 @@ set smartcase
 
 " Informative status line
 " set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
-
+"
 " http://www.linux.com/archive/feature/120126
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}\ %{&fo}]\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
 " Always show the status line
@@ -126,6 +124,7 @@ function! FoldSpellBalloon()
     return join( lines, has( “balloon_multiline" ) ? “\n" : " " )
 endfunction
 
+" JJM FIXME E518: Unknown option: balloonexpr=FoldSpellBalloon()
 " set balloonexpr=FoldSpellBalloon()
 " set ballooneval
 
