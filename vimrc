@@ -12,7 +12,6 @@ filetype plugin on
 " FF<CR> (Find File)
 let g:FindFileIgnore = ['*.o', '*.pyc', '*/tmp/*', '*/.git/*']
 
-
 " Add documentation for project plugin
 helptags ~/.vim/doc
 
