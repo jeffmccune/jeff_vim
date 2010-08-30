@@ -30,10 +30,10 @@ filetype plugin on
 filetype indent on
 
 if has("gui_running")
-    "Set the font and size
-    set guifont=Consolas:h18
-    " Hide toolbar
-    set guioptions-=T
+  "Set the font and size
+  set guifont=Consolas:h18
+  " Hide toolbar
+  set guioptions-=T
 endif
 
 " Turn on spell checking with English dictionary
@@ -137,5 +137,7 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 au BufWinEnter * let w:m3=matchadd('ErrorMsg', '\s\+$', -1)
 " Give an indicator of spaces before a tab.
 au BufWinEnter * let w:m4=matchadd('ErrorMsg', ' \+\ze\t', -1)
+
+set bg=dark
 
 " EOF
