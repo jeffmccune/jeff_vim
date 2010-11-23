@@ -2,6 +2,9 @@
 " mccune.jeff@gmail.com
 " 0xEFF on Twitter
 
+" Swap dir for all so we don't litter
+set directory=~/.vimswp
+
 set nocompatible
 
 " SnipMate plugin
