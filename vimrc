@@ -143,4 +143,9 @@ au BufWinEnter * let w:m4=matchadd('ErrorMsg', ' \+\ze\t', -1)
 
 set bg=dark
 
+" Allow vim comment commands
+" http://vimdoc.sourceforge.net/htmldoc/options.html#modeline
+set modeline
+set modelines=7
+
 " EOF
