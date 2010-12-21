@@ -46,14 +46,21 @@ snippet if
 	  ${2:# statements}
 	}
 snippet case
-	ca se ${1:$operatingsystem} {
-		${2:"centos", "redhat"}: {
-			${3:# statements about $2}
-		}
-		"${4:default}": {
-			${5:# statements about $4}
-		}
-	}${6}
+	case ${1:$operatingsystem} {
+	  ${2:centos, redhat, oel}: {
+	    case $lsbmajdistrelease {
+	      5: {
+	        notice("Unimplemented")
+	      }
+	      default: {
+	        fail("$operatingsystem release $lsbmajdistrelease is not supported")
+	      }
+	    }
+	  }
+	  default: {
+	    fail("operatingsystem $operatingsystem is not supported")
+	  }
+	}
 snippet class
 	# Class: ${1:myclass}
 	#
@@ -68,8 +75,8 @@ snippet class
 	# Sample Usage:
 	#
 	class $1 {
-		$module = "$1"
-		notify { "FIXME: ${module} unimplemented": }
+	  $module = "$1"
+	  notify { "FIXME: ${module} unimplemented": }
 	  ${3:# statements}
 	}
 snippet class::
@@ -86,10 +93,10 @@ snippet class::
 	# Sample Usage:
 	#
 	class $1::$2 inherits $1 {
-		$module = "$1"
-		$class  = "${module}::$2"
-		notify { "FIXME: ${class} unimplemented": }
-		${4:# statements}
+	  $module = "$1"
+	  $class  = "${module}::$2"
+	  notify { "FIXME: ${class} unimplemented": }
+	  ${4:# statements}
 	}
 snippet File
 	File {

@@ -43,6 +43,8 @@ endif
 set spell
 set spelllang=en
 set spellsuggest=9 "show only 9 suggestions for misspelled words
+" Selectively turn spelling off.
+autocmd FileType c,cpp,lisp,puppet,ruby setlocal nospell
 
 set bs=2 "set backspace to be able to delete previous characters
 " set wrapmargin (Generally unrecommended)
