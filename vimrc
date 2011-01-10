@@ -52,10 +52,11 @@ set bs=2 "set backspace to be able to delete previous characters
 
 " Turn on smart indent
 set tabstop=2 "set tab character to 4 characters
+set softtabstop=2
 set expandtab "turn tabs into whitespace
 set shiftwidth=2 "indent width for autoindent
-set smartindent
-filetype indent on "indent depends on filetype
+" set smartindent
+" filetype indent on "indent depends on filetype
 
 " Enable line numbering, taking up 6 spaces
 set number
