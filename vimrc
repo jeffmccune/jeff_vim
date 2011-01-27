@@ -18,11 +18,6 @@ let g:FindFileIgnore = ['*.o', '*.pyc', '*/tmp/*', '*/.git/*']
 " Add documentation for project plugin
 helptags ~/.vim/doc
 
-" Turn on search highlighting
-set hlsearch
-" Turn on incremental search
-set incsearch
-
 " Shift movement and selection Mac behavior.  Less vim like.
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
@@ -44,7 +39,7 @@ set spell
 set spelllang=en
 set spellsuggest=9 "show only 9 suggestions for misspelled words
 " Selectively turn spelling off.
-autocmd FileType c,cpp,lisp,puppet,ruby setlocal nospell
+autocmd FileType c,cpp,lisp,puppet,ruby,vim setlocal nospell
 
 set bs=2 "set backspace to be able to delete previous characters
 " set wrapmargin (Generally unrecommended)
@@ -55,8 +50,8 @@ set tabstop=2 "set tab character to 4 characters
 set softtabstop=2
 set expandtab "turn tabs into whitespace
 set shiftwidth=2 "indent width for autoindent
-" set smartindent
 " filetype indent on "indent depends on filetype
+set smartindent
 
 " Enable line numbering, taking up 6 spaces
 set number
@@ -64,6 +59,8 @@ set number
 " Turn on word wrapping (Visually)
 " set wrap
 
+" Turn on search highlighting
+set hlsearch
 " Turn on incremental search with ignore case (except explicit caps)
 set incsearch
 set ignorecase
@@ -79,7 +76,8 @@ set laststatus=2
 
 " Set color scheme
 set t_Co=256
-colorscheme desert256
+" colorscheme desert256
+colorscheme slate
 syntax enable
 
 " Enable indent folding
@@ -128,7 +126,7 @@ endfunction
 " set ballooneval
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-" Show trailing whitepace and spaces before a tab:
+" Show trailing whitespace and spaces before a tab:
 " match ExtraWhitespace /\s\+$\| \+\ze\t/
 " highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " JJM: Any changes to colorscheme will trigger this back on
@@ -143,6 +141,8 @@ au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 au BufWinEnter * let w:m3=matchadd('ErrorMsg', '\s\+$', -1)
 " Give an indicator of spaces before a tab.
 au BufWinEnter * let w:m4=matchadd('ErrorMsg', ' \+\ze\t', -1)
+" Give an indicator of tabs before a space.
+au BufWinEnter * let w:m5=matchadd('ErrorMsg', '\t\+\ze ', -1)
 
 set bg=dark
 
