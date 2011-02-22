@@ -85,13 +85,28 @@ set foldenable
 set fdm=indent
 
 " Set space to toggle a fold
-nnoremap <space> za
+" nnoremap <space> za
 
 " Hide buffer when not in window (to prevent relogin with FTP edit)
 set bufhidden=hide
 
 " Have 3 lines of offset (or buffer) when scrolling
 set scrolloff=3
+
+" Visually select current indent level and greater.
+" http://vim.wikia.com/wiki/VimTip1014
+function! SelectIndent ()
+  let temp_var=indent(line("."))
+  while indent(line(".")-1) >= temp_var
+    exe "normal k"
+  endwhile
+  exe "normal V"
+  while indent(line(".")+1) >= temp_var
+    exe "normal j"
+  endwhile
+endfun
+" Map space to select the indent level
+nmap <Space> :call SelectIndent()<CR>
 
 " Enable balloon tooltips on spelling suggestions and folds
 function! FoldSpellBalloon()
