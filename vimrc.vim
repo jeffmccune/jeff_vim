@@ -81,8 +81,10 @@ colorscheme slate
 syntax enable
 
 " Enable indent folding
-set foldenable
-set fdm=indent
+if version >= 702
+  set foldenable
+  set fdm=indent
+end
 
 " Set space to toggle a fold
 " nnoremap <space> za
