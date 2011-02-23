@@ -6,6 +6,7 @@ environment:
     cd ~
     git clone git://github.com/jeffmccune/jeff_vim .vim
     ln -s .vim/vimrc.vim .vimrc
+    ln -s .vim/gvimrc.vim .gvimrc
     mkdir .vimswp
     vim
 
