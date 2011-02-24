@@ -191,5 +191,12 @@ function! UnQuote()
   normal `z
 endfunction
 
+" JJM Slight modification to surround the word with []'s
+nnoremap <silent> qb :call Brace("[", "]")<CR>
+function! Brace(left,right)
+  normal mz
+  exe 's/\(\k*\%#\k*\)/' . a:left . '\1' . a:right . '/'
+  normal `zl
+endfunction
 
 " EOF
