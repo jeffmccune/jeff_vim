@@ -8,18 +8,19 @@ snippet "
 snippet {
 	{ ${1} }
 snippet notify
-	notify { "${1:message}": }
+	notify { "${1:title}":
+	  message => "${2:$1}",
+	}
 snippet user
-	user {
-		"${1:nobody}":
-		  ensure     => "${2:present}",
-			home       => "${3:/var/lib/$1}",
-			uid        => "${4:333}",
-			gid        => "${5:$4}",
-			comment    => "${6:$1 account}",
-			membership => "${7:minimum}",
-			password   => '!!',
-			shell      => "${8:/bin/bash, /bin/false, /sbin/nologin, /bin/zsh, /bin/tcsh}",
+	user { '${1:nobody}':
+	  ensure     => ${2:present},
+	  home       => '${3:/var/lib/$1}',
+	  uid        => ${4:333},
+	  gid        => ${5:$4},
+	  comment    => '${6:$1 account}',
+	  membership => ${7:minimum},
+	  password   => '!!',
+	  shell      => '${8:/bin/bash}',
 	}
 snippet define
 	# Define: ${1:mydefinedtype}
@@ -100,17 +101,35 @@ snippet class::
 	}
 snippet File
 	File {
-	  owner => "${1:0}",
-	  group => "${2:$1}",
-	  mode  => "${3:0644}",
+	  owner => '${1:0}',
+	  group => '${2:$1}',
+	  mode  => '${3:0644}',
 	}
 snippet file
-	file {
-	  "${1:/dev/null}":
+	file { '${1:/dev/null}':
 	    source  => "puppet:///modules/${module}${2:$1}",
-			recurse => "${3:false}"
+	    recurse => "${3:false}"
 	}
 snippet :
-	"${1:title}":${2}
+	'${1:title}':${2}
 snippet >
 	${1:attribute} => ${2:value},${3}
+snippet rsa Paste your RSA public key.
+	`system("cat ~/.ssh/id_rsa.pub")`
+snippet ssh ssh_authorized_key resource declaration
+	ssh_authorized_key { '${1:`system("whoami")`}':
+	  ensure  => present,
+	  key     => "${2:${rsa_key}}",
+	  name    => '${3:`system("git config user.email")`}',
+	  type    => ssh-rsa,
+	  options => undef,
+	  target  => undef,
+	  user    => '${4:`system("whoami")`}',
+	}
+snippet host host resource declaration
+	host { '${1:`system("hostname")`}':
+	  ensure       => present,
+	  ip           => ${2:$ipaddress},
+	  name         => '${3:$1}',
+	  host_aliases => [ "${4:`system("hostname -s")`}", ],
+	}
