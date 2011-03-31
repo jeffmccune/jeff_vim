@@ -224,4 +224,7 @@ nmap <silent> <F1> :setlocal invnumber<CR>
 nmap <silent> <F2> :setlocal invspell<CR>
 nmap <silent> <F5> :FufFile **/<CR>
 
+" Make file/command completion useful
+set wildmode=list:longest
+
 " EOF
