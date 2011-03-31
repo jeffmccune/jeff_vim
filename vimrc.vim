@@ -93,8 +93,8 @@ end
 " Set space to toggle a fold
 " nnoremap <space> za
 
-" Hide buffer when not in window (to prevent relogin with FTP edit)
-set bufhidden=hide
+" Allow Vim to manage multiple buffers
+set hidden
 
 " Have 3 lines of offset (or buffer) when scrolling
 set scrolloff=3
@@ -230,5 +230,11 @@ nmap <silent> <F5> :FufFile **/<CR>
 
 " Make file/command completion useful
 set wildmode=list:longest
+
+" Set the xterm title
+set title
+
+" Configure a longer history
+set history=1000
 
 " EOF
