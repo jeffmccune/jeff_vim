@@ -63,6 +63,10 @@ set number
 set hlsearch
 " Turn on incremental search with ignore case (except explicit caps)
 set incsearch
+
+" Make /-style searches case-sensitive only if there is a capital letter in
+" the search expression. *-style searches continue to be consistently
+" case-sensitive.
 set ignorecase
 set smartcase
 
