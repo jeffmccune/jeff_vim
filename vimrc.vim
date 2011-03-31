@@ -108,7 +108,7 @@ function! SelectIndent ()
   endwhile
 endfun
 " Map space to select the indent level
-nmap <Space> :call SelectIndent()<CR>
+" nmap <space> :call SelectIndent()<CR>
 
 " Enable balloon tooltips on spelling suggestions and folds
 function! FoldSpellBalloon()
@@ -212,6 +212,16 @@ function! AlignFats()
   exe "norm l"
 endfun
 
-noremap <silent> , :call AlignFats()<CR>
+" Remap the personal modifier key (Defaults to '\')
+let mapleader = ","
+" Map FuzzyFinder to <leader>f
+map <leader>t :FufFile **/<CR>
+" Map leader key, then a to Align Fats.
+noremap <leader>a :call AlignFats()<CR>
+
+" Map function keys to useful things
+nmap <silent> <F1> :setlocal invnumber<CR>
+nmap <silent> <F2> :setlocal invspell<CR>
+nmap <silent> <F5> :FufFile **/<CR>
 
 " EOF
