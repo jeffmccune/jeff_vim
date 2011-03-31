@@ -237,4 +237,10 @@ set title
 " Configure a longer history
 set history=1000
 
+" Syntastic Plugin (Automatic Syntax Checking)
+" turns on chevrons in the gutter marking lines with syntax errors.
+let g:syntastic_enable_signs=1
+" automatically open a location list when a file is saved with syntax errors
+let g:syntastic_auto_loc_list=1
+
 " EOF
