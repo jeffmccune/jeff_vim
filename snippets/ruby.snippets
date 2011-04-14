@@ -507,3 +507,20 @@ snippet it
 	it "${1:should ...\}" do
 	  ${2}
 	end
+snippet	face
+	require 'puppet/face'
+	
+	Puppet::Face.define(:${1:the_noun}, '${2:0.0.1}') do
+	  action :${3:the_verb} do
+	    when_invoked do |*args|
+	      # actions (e.g. filepath = args[0])
+	      ${4}
+	    end
+	  end
+	end
+snippet action
+	action:${1:the_verb} do
+	  when_invoked do |*args|
+	    ${2}
+	  end
+	end
