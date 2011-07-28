@@ -524,3 +524,14 @@ snippet action
 	    ${2}
 	  end
 	end
+snippet option
+	option "--${1:input} FILE" do
+	  summary "The ${1} inspect report to use.  Defaults to input.yaml"
+	  description <<-'EOT'
+	The ${1} file the use.
+	  EOT
+	
+	  # before_action do |action, args, options|
+	  #   # JJM Don't use instance variables
+	  # end
+	end

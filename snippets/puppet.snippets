@@ -133,3 +133,12 @@ snippet host host resource declaration
 	  name         => '${3:$1}',
 	  host_aliases => [ "${4:`system("hostname -s")`}", ],
 	}
+snippet node default node definition
+	node default {
+	  notify { 'alpha': } ->
+	  class  { '${1:module}': } ->
+	  notify { 'omega': }
+	}
+snippet anchor resources for the anchor pattern
+	anchor { "${1:$module_name}::begin": }
+	anchor { "${2:$1}::end": }

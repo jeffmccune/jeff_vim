@@ -169,6 +169,8 @@ if version >= 702
   au BufWinEnter * let w:m4=matchadd('ErrorMsg', ' \+\ze\t', -1)
   " Give an indicator of tabs before a space.
   au BufWinEnter * let w:m5=matchadd('ErrorMsg', '\t\+\ze ', -1)
+  " Just highlight all tabs.  They're annoying.
+  au BufWinEnter * let w:m6=matchadd('ErrorMsg', '\t\+', -1)
 
 end
 
@@ -242,5 +244,9 @@ set history=1000
 let g:syntastic_enable_signs=1
 " automatically open a location list when a file is saved with syntax errors
 let g:syntastic_auto_loc_list=1
+
+" Automatically reload files on changes.
+" Useful for git rebasing and such
+set autoread
 
 " EOF
