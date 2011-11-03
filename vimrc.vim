@@ -222,13 +222,16 @@ endfun
 let mapleader = ","
 " Map FuzzyFinder to <leader>f
 map <leader>t :FufFile **/<CR>
-" Map leader key, then a to Align Fats.
+" Map Control-T to FuzzyFinder
+map <silent> <C-T> :FufFile **/<CR>
+
+" Map leader key (Set above), then a to Align Fats.
 noremap <leader>a :call AlignFats()<CR>
 
 " Map function keys to useful things
 nmap <silent> <F1> :setlocal invnumber<CR>
 nmap <silent> <F2> :setlocal invspell<CR>
-nmap <silent> <F5> :FufFile **/<CR>
+nmap <silent> <F5> :FufBuffer<CR>
 
 " Make file/command completion useful
 set wildmode=list:longest
@@ -248,5 +251,6 @@ let g:syntastic_auto_loc_list=1
 " Automatically reload files on changes.
 " Useful for git rebasing and such
 set autoread
+
 
 " EOF
