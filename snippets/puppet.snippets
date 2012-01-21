@@ -47,37 +47,35 @@ snippet if
 	  ${2:# statements}
 	}
 snippet case
-	case ${1:$operatingsystem} {
-	  ${2:centos, redhat, oel}: {
-	    case $lsbmajdistrelease {
-	      5: {
-	        notice("Unimplemented")
-	      }
-	      default: {
-	        fail("$operatingsystem release $lsbmajdistrelease is not supported")
-	      }
-	    }
+	case $::osfamily {
+	  redhat: {
+	    notify { "$module_name supported": }
 	  }
 	  default: {
-	    fail("operatingsystem $operatingsystem is not supported")
+	    $msg = "OS Family: [${osfamily}] is not implemented"
+	    # Master side warning
+	    warning $msg
+	    # Agent side notification
+	    notify { "$module_name unimplemented": message => $msg }
 	  }
 	}
 snippet class
-	# Class: ${1:myclass}
+	# = Class: ${1:myclass}
 	#
 	#   ${2:class description goes here.}
 	#
-	# Parameters:
+	# = Parameters
 	#
-	# Actions:
+	# = Actions
 	#
-	# Requires:
+	# = Requires
 	#
-	# Sample Usage:
+	# = Sample Usage
 	#
+	#
+	# (MARKUP: http://links.puppetlabs.com/puppet_manifest_documentation)
 	class $1 {
-	  $module = "$1"
-	  notify { "FIXME: ${module} unimplemented": }
+	  notify { "FIXME: ${module_name} unimplemented": }
 	  ${3:# statements}
 	}
 snippet class::
@@ -140,5 +138,7 @@ snippet node default node definition
 	  notify { 'omega': }
 	}
 snippet anchor resources for the anchor pattern
-	anchor { "${1:$module_name}::begin": }
+	# The Anchor Pattern is to work around Puppet issue 8040
+	# More information at: http://links.puppetlabs.com/anchor_pattern
+	anchor { "${1:module_name}::begin": }
 	anchor { "${2:$1}::end": }
