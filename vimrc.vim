@@ -220,10 +220,11 @@ endfun
 
 " Remap the personal modifier key (Defaults to '\')
 let mapleader = ","
-" Map FuzzyFinder to <leader>f
-map <leader>t :FufFile **/<CR>
-" Map Control-T to FuzzyFinder
-map <silent> <C-T> :FufFile **/<CR>
+"" Map FuzzyFinder to <leader>f
+"" 2012-01-31 JJM DISABLED IN PREFERENCE OF CTRLP
+" map <leader>t :FufFile **/<CR>
+"" Map Control-T to FuzzyFinder
+" map <silent> <C-T> :FufFile **/<CR>
 
 " Map leader key (Set above), then a to Align Fats.
 noremap <leader>a :call AlignFats()<CR>
@@ -252,5 +253,7 @@ let g:syntastic_auto_loc_list=1
 " Useful for git rebasing and such
 set autoread
 
+" Make ctrlp ignore dotfiles and dotdirectories
+let g:ctrlp_dotfiles = 0
 
 " EOF
