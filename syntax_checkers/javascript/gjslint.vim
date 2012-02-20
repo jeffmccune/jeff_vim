@@ -1,26 +1,20 @@
 "============================================================================
-"File:        haml.vim
-"Description: Syntax checking plugin for syntastic.vim
+"File:        gjslint.vim
+"Description: Javascript syntax checker - using gjslint
 "Maintainer:  Martin Grenfell <martin.grenfell at gmail dot com>
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
 "             it and/or modify it under the terms of the Do What The Fuck You
 "             Want To Public License, Version 2, as published by Sam Hocevar.
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
-"
 "============================================================================
-if exists("loaded_haml_syntax_checker")
-    finish
-endif
-let loaded_haml_syntax_checker = 1
-
-"bail if the user doesnt have the haml binary installed
-if !executable("haml")
-    finish
+if !exists("g:syntastic_javascript_gjslint_conf")
+    let g:syntastic_javascript_gjslint_conf = ""
 endif
 
-function! SyntaxCheckers_haml_GetLocList()
-    let makeprg = "haml -c " . shellescape(expand("%"))
-    let errorformat = 'Haml error on line %l: %m,Syntax error on line %l: %m,%-G%.%#'
+function! SyntaxCheckers_javascript_GetLocList()
+    let makeprg = "gjslint " . g:syntastic_javascript_gjslint_conf . " --nosummary --unix_mode --nodebug_indentation --nobeep " . shellescape(expand('%'))
+    let errorformat="%f:%l:(New Error -%\\?\%n) %m,%f:%l:(-%\\?%n) %m,%-G1 files checked, no errors found.,%-G%.%#"
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
+
