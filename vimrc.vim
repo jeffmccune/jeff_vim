@@ -257,4 +257,7 @@ set autoread
 " Make ctrlp ignore dotfiles and dotdirectories
 let g:ctrlp_dotfiles = 0
 
+" vim.ack
+let g:ackprg="ack -H --nocolor --nogroup --column"
+
 " EOF
