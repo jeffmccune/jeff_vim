@@ -142,3 +142,15 @@ snippet anchor resources for the anchor pattern
 	# More information at: http://links.puppetlabs.com/anchor_pattern
 	anchor { "${1:module_name}::begin": }
 	anchor { "${2:$1}::end": }
+snippet registry_key resources for managing a registry_key
+	registry_key { "${1:HKLM\\Software\\Vendor\\Puppet Labs}":
+	  ensure => present,
+	  purge  => false,
+	}
+snippet registry_value resources for managing a registry_value
+	registry_value { "${1:HKLM\\Software\\Vendor\\Puppet Labs\\Value1}":
+	  ensure => present,
+	  type   => ${2:string},
+	  data   => "${3:foo}",
+	}
+
