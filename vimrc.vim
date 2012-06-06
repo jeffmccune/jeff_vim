@@ -249,6 +249,8 @@ set history=1000
 let g:syntastic_enable_signs=1
 " automatically open a location list when a file is saved with syntax errors
 let g:syntastic_auto_loc_list=1
+" We typically use MRI
+" let g:syntastic_ruby_checker="mri"
 
 " Automatically reload files on changes.
 " Useful for git rebasing and such
@@ -256,8 +258,65 @@ set autoread
 
 " Make ctrlp ignore dotfiles and dotdirectories
 let g:ctrlp_dotfiles = 0
+" Open buffers only if they're in the current tab
+let g:ctrlp_jump_to_buffer = 1
+" Working directory is where .git lives
+let g:ctrlp_working_path_mode = 2
+
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtBS()':              ['<bs>', '<c-]>'],
+  \ 'PrtDelete()':          ['<del>'],
+  \ 'PrtDeleteWord()':      ['<c-w>'],
+  \ 'PrtClear()':           ['<c-u>'],
+  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+  \ 'PrtHistory(-1)':       ['<c-n>'],
+  \ 'PrtHistory(1)':        ['<c-p>'],
+  \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+  \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+  \ 'AcceptSelection("t")': ['<c-t>', '<MiddleMouse>'],
+  \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+  \ 'ToggleFocus()':        ['<s-tab>'],
+  \ 'ToggleRegex()':        ['<c-r>'],
+  \ 'ToggleByFname()':      ['<c-d>'],
+  \ 'ToggleType(1)':        ['<c-f>', '<c-up>'],
+  \ 'ToggleType(-1)':       ['<c-b>', '<c-down>'],
+  \ 'PrtExpandDir()':       ['<tab>'],
+  \ 'PrtInsert("w")':       ['<F2>', '<insert>'],
+  \ 'PrtInsert("s")':       ['<F3>'],
+  \ 'PrtInsert("v")':       ['<F4>'],
+  \ 'PrtInsert("+")':       ['<F6>'],
+  \ 'PrtCurStart()':        ['<c-a>'],
+  \ 'PrtCurEnd()':          ['<c-e>'],
+  \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+  \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+  \ 'PrtClearCache()':      ['<F5>'],
+  \ 'PrtDeleteMRU()':       ['<F7>'],
+  \ 'CreateNewFile()':      ['<c-y>'],
+  \ 'MarkToOpen()':         ['<c-z>'],
+  \ 'OpenMulti()':          ['<c-o>'],
+  \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+  \ }
 
 " vim.ack
 let g:ackprg="ack -H --nocolor --nogroup --column"
+
+" Stolen from barn: https://gist.github.com/2839654
+" Use ALT+SHIFT+[left|right]
+" to navigate tabs in the various modes I'm likely to be in.
+nnoremap <silent>^[[1;10C :tabnext<CR>
+nnoremap <silent>^[[1;10D :tabprevious<CR>
+inoremap <silent>^[[1;10C <ESC>:tabnext<CR>
+inoremap <silent>^[[1;10D <ESC>:tabprevious<CR>
+vnoremap <silent>^[[1;10C <ESC>:tabnext<CR>
+vnoremap <silent>^[[1;10D <ESC>:tabprevious<CR>
+
+" Map hotkeys to create or kill tabs
+nnoremap <silent><leader>tn :tabnew<CR>
+nnoremap <silent><leader>tk :tabclose<CR>
+
+" From http://stackoverflow.com/questions/8354826/change-fugitives-gstatus-window-height
+" Make the preview window bigger than a postage stamp
+set previewheight=22
 
 " EOF
