@@ -495,19 +495,27 @@ snippet sinc
 	class << self; self end
 snippet nam
 	namespace :${1:`Filename()`} do
-		${2}
+	  ${2}
 	end
 snippet tas
 	desc "${1:Task description\}"
 	task :${2:task_name => [:dependent, :tasks]} do
-		${3}
+	  ${3}
 	end
 ## JJM Rspec snippets
+snippet describe
+	describe ${1:Class} do
+	  ${2}
+	end
+snippet let
+	let(:${1:memo_method}) do
+	  ${2:"foo"}
+	end
 snippet it
 	it "${1:should ...\}" do
 	  ${2}
 	end
-snippet	face
+snippet face
 	require 'puppet/face'
 	
 	Puppet::Face.define(:${1:the_noun}, '${2:0.0.1}') do
