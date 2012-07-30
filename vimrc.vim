@@ -75,6 +75,7 @@ set smartcase
 " set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
 "
 " http://www.linux.com/archive/feature/120126
+" [%{fugitive#statusline()}]
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}\ %{&fo}]\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
 " Always show the status line
 set laststatus=2
@@ -86,10 +87,11 @@ colorscheme slate
 syntax enable
 
 " Enable indent folding
-if version >= 702
-  set foldenable
-  set fdm=indent
-end
+" JJM 2012-07-30 Disabled because I find myself expanding all folds anyway.
+" if version >= 702
+"   set foldenable
+"   set fdm=indent
+" end
 
 " Set space to toggle a fold
 " nnoremap <space> za
