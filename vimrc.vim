@@ -80,11 +80,19 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}\ %{&fo}]\ [%l/%L,%v\ %p%%]\ [HEX=\%0
 " Always show the status line
 set laststatus=2
 
+"" 256 colors are disabled since we're using the custom solarized color palette
+"" in iTerm2.
+" set t_Co=256
+
 " Set color scheme
-set t_Co=256
 " colorscheme desert256
-colorscheme slate
+" colorscheme slate
 syntax enable
+" Set g:solarized_termcolors=256 if the terminal emulator is not using the
+" solarized palette.
+" let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
 
 " Enable indent folding
 " JJM 2012-07-30 Disabled because I find myself expanding all folds anyway.
@@ -176,8 +184,6 @@ if version >= 702
   au BufWinEnter * let w:m6=matchadd('ErrorMsg', '\t\+', -1)
 
 end
-
-set bg=dark
 
 " Allow vim comment commands
 " http://vimdoc.sourceforge.net/htmldoc/options.html#modeline
