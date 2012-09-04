@@ -33,6 +33,8 @@ if has("gui_running")
   set guifont=Menlo:h18
   " Hide toolbar
   set guioptions-=T
+  " Hide the right scroll bar
+  set guioptions-=r
 endif
 
 " Turn on spell checking with English dictionary
@@ -77,6 +79,7 @@ set smartcase
 " http://www.linux.com/archive/feature/120126
 " [%{fugitive#statusline()}]
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}\ %{&fo}]\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
+" set statusline=%F%m%r%h%w\ [TYPE=%Y]\ %{fugitive#statusline()}\ [%l/%L,%v\ %p%%]\ [HEX=\%02.2B]
 " Always show the status line
 set laststatus=2
 
