@@ -99,13 +99,13 @@ set background=dark
 
 " Enable indent folding
 " JJM 2012-07-30 Disabled because I find myself expanding all folds anyway.
-" if version >= 702
-"   set foldenable
-"   set fdm=indent
-" end
+if version >= 702
+  set foldenable
+  set fdm=indent
+end
 
 " Set space to toggle a fold
-" nnoremap <space> za
+nnoremap <space> za
 
 " Allow Vim to manage multiple buffers
 set hidden
