@@ -7,6 +7,15 @@ snippet =b
 	=begin rdoc
 		${1}
 	=end
+# New YARD Doc
+snippet ##
+	##
+	# ${1}
+	#
+	# @api private
+	#
+	# @return [String]
+	${1}
 snippet y
 	:yields: ${1:arguments}
 snippet rb
@@ -14,7 +23,7 @@ snippet rb
 snippet beg
 	begin
 		${3}
-	rescue ${1:Exception} => ${2:e}
+	rescue ${1:Exception} => ${2:detail}
 	end
 snippet req
 	require "${1}"${2}
@@ -509,6 +518,10 @@ snippet describe
 snippet let
 	let(:${1:memo_method}) do
 	  ${2:"foo"}
+	end
+snippet before
+	before :each do
+	  ${1}
 	end
 snippet it
 	it "${1:should ...\}" do
