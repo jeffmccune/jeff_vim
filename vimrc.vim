@@ -364,4 +364,26 @@ let g:ConqueTerm_ReadUnfocused = 1
 " Setup ruby-vim-conque to use rspec and not spec
 let g:ruby_conque_rspec_runner='rspec'
 
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.  The cursor will
+" jump to the location of the first error.  To jump back use the '' or ``
+" key chords.
+"
+" Note: Must allow nesting of autocmds to enable any customizations for quickfix
+" buffers.
+" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
+" (but not if it's already open). However, as part of the autocmd, this doesn't
+" seem to happen.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Map a :make to a command to make it easier to run.
+map <Leader>j :make<CR>
+
+" Use rspec as the default compiler.  This will help with MakeGreen
+autocmd BufNewFile,BufRead *.rb compiler rspec
+autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+autocmd BufWritePost *_spec.rb make %
+
 " EOF
