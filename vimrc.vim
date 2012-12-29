@@ -354,4 +354,14 @@ endfunction
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
 nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 
+" Terminal Hacking
+" We need this to let autotest and watchr update the screen as we work in
+" another buffer.  This allows us to leave the terminal buffer without
+" switching it out of insert mode.
+let g:ConqueTerm_CWInsert = 1
+let g:ConqueTerm_ReadUnfocused = 1
+
+" Setup ruby-vim-conque to use rspec and not spec
+let g:ruby_conque_rspec_runner='rspec'
+
 " EOF
