@@ -3,17 +3,23 @@ function! RelatedSpec()
   let l:fullpath = expand("%:p")
   let l:filepath = expand("%:h")
   let l:fname = expand("%:t")
-  let l:filepath_without_app = substitute(l:filepath, "app/", "", "")
+
+  " Trim off common prefixes
+  let l:filepath_trim = l:filepath
+  let l:filepath_trim = substitute(l:filepath_trim, "^lib$", "", "")
+  let l:filepath_trim = substitute(l:filepath_trim, "^lib/", "", "")
+  let l:filepath_trim = substitute(l:filepath_trim, "^app$", "", "")
+  let l:filepath_trim = substitute(l:filepath_trim, "^app/", "", "")
 
   " Possible names for the spec/test for the file we're looking at
   let l:test_names = [substitute(l:fname, ".rb$", "_spec.rb", ""), substitute(l:fname, ".rb$", "_test.rb", "")]
 
   " Possible paths
-  let l:test_paths = ["spec", "fast_spec", "test"]
+  let l:test_paths = ["spec/unit", "spec", "fast_spec", "test"]
 
   for test_name in l:test_names
     for path in l:test_paths
-      let l:spec_path = path . "/" . l:filepath_without_app . "/" . test_name
+      let l:spec_path = path . "/" . l:filepath_trim . "/" . test_name
       let l:full_spec_path = substitute(l:fullpath, l:filepath . "/" . l:fname, l:spec_path, "")
       if filereadable(l:spec_path)
         return l:full_spec_path
