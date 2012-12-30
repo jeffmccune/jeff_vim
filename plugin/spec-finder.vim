@@ -42,6 +42,16 @@ function! RelatedSpecVOpen()
   endif
 endfunction
 
+" RelatedSpecMake is useful if the compiler in Vim can parse the output of
+" rspec into the quickfix list.
+function! RelatedSpecMake()
+  let l:spec_path = RelatedSpec()
+  if filereadable(l:spec_path)
+    execute ":make " . l:spec_path
+  endif
+endfunction
+
+command! RelatedSpecMake call RelatedSpecMake()
 command! RelatedSpecVOpen call RelatedSpecVOpen()
 command! RelatedSpecOpen call RelatedSpecOpen()
 

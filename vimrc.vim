@@ -378,12 +378,14 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " Map a :make to a command to make it easier to run.
-map <Leader>j :make<CR>
+map <Leader>j :RelatedSpecMake<CR>
+nnoremap <silent> <C-r> :RelatedSpecVOpen<CR>
+nnoremap <silent> ,<C-r> :RelatedSpecOpen<CR>
 
 " Use rspec as the default compiler.  This will help with MakeGreen
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
-autocmd BufWritePost *_spec.rb make %
+autocmd BufWritePost *_spec.rb make! %
 
 " EOF
