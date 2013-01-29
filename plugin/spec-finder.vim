@@ -7,6 +7,8 @@ function! RelatedSpec()
   " Trim off common prefixes
   let l:filepath_trim = l:filepath
   let l:filepath_trim = substitute(l:filepath_trim, "^lib$", "", "")
+  let l:filepath_trim = substitute(l:filepath_trim, "^lib/puppet", "", "")
+  let l:filepath_trim = substitute(l:filepath_trim, "^lib/facter", "", "")
   let l:filepath_trim = substitute(l:filepath_trim, "^lib/", "", "")
   let l:filepath_trim = substitute(l:filepath_trim, "^app$", "", "")
   let l:filepath_trim = substitute(l:filepath_trim, "^app/", "", "")
