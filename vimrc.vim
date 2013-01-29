@@ -385,7 +385,7 @@ nnoremap <silent> ,<C-r> :RelatedSpecOpen<CR>
 " Use rspec as the default compiler.  This will help with MakeGreen
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-
-autocmd BufWritePost *_spec.rb make! %
+" Run the compiler when a spec file is written.  This should invoke the tests.
+" autocmd BufWritePost *_spec.rb make! %
 
 " EOF
