@@ -237,6 +237,7 @@ let mapleader = ","
 " map <leader>t :FufFile **/<CR>
 "" Map Control-T to FuzzyFinder
 " map <silent> <C-T> :FufFile **/<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/.git/*
 
 " Map leader key (Set above), then a to Align Fats.
 noremap <leader>a :call AlignFats()<CR>
