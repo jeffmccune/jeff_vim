@@ -60,20 +60,43 @@ snippet case
 	  }
 	}
 snippet class
-	# = Class: ${1:myclass}
+	# == Class: ${1:myclass}
 	#
-	#   ${2:class description goes here.}
+	# ${2:Full description of class bind here.}
 	#
-	# = Parameters
+	# === Parameters
 	#
-	# = Actions
+	# Document parameters here.
 	#
-	# = Requires
+	# [*sample_parameter*]
+	#   Explanation of what this parameter affects and what it defaults to.
+	#   e.g. "Specify one or more upstream ntp servers as an array."
 	#
-	# = Sample Usage
+	# === Variables
 	#
+	# Here you should define a list of variables that this module would require.
 	#
-	# (MARKUP: http://links.puppetlabs.com/puppet_manifest_documentation)
+	# [*sample_variable*]
+	#   Explanation of how this variable affects the function of this class and if it
+	#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
+	#   External Node Classifier as a comma separated list of hostnames." (Note,
+	#   global variables should not be used in preference to class parameters  as of
+	#   Puppet 2.6.)
+	#
+	# === Examples
+	#
+	#  class { $1:
+	#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+	#  }
+	#
+	# === Authors
+	#
+	# Jeff McCune <jeff@puppetlabs.com>
+	#
+	# === Copyright
+	#
+	# Copyright 2013 Jeff McCune, unless otherwise noted.
+	#
 	class $1 {
 	  notify { "FIXME: ${module_name} unimplemented": }
 	  ${3:# statements}

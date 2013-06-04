@@ -7,6 +7,11 @@ snippet =b
 	=begin rdoc
 		${1}
 	=end
+# New YARD parameter
+snippet @param
+	@param [${1:String}] ${2:str} ${3:Describe the string parameter here}
+snippet @return
+	@return [${1:Types}] ${2:description
 # New YARD Doc
 snippet ##
 	##
@@ -406,11 +411,11 @@ snippet optp
 
 	ARGV.options do |opts|
 		opts.banner = "Usage: #{File.basename($PROGRAM_NAME)}
-snippet opt
-	opts.on( "-${1:o}", "--${2:long-option-name}", ${3:String},
-	         "${4:Option description.}") do |${5:opt}|
-		${6}
-	end
+# snippet opt
+# 	opts.on( "-${1:o}", "--${2:long-option-name}", ${3:String},
+# 	         "${4:Option description.}") do |${5:opt}|
+# 		${6}
+# 	end
 snippet tc
 	require "test/unit"
 
@@ -546,6 +551,10 @@ snippet action
 	end
 snippet pry
 	require 'pry'; binding.pry
+snippet @opt
+	@option opts [${1:String}] :${2:file} ('${3:SUMMARY_TEMPLATE}') ${4:The template filename}
+snippet @ret
+	@return [${1:String}] ${2:the template of the summary}
 snippet option
 	option "--${1:input} FILE" do
 	  summary "The ${1} inspect report to use.  Defaults to input.yaml"
