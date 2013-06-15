@@ -388,5 +388,14 @@ autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 " Run the compiler when a spec file is written.  This should invoke the tests.
 " autocmd BufWritePost *_spec.rb make! %
+"
+
+set encoding=utf-8
+
+" Powerline
+set rtp+=~/src/powerline/powerline/bindings/vim
+
+let g:Powerline_theme='short'
+let g:Powerline_colorscheme='solarized256_dark'
 
 " EOF
