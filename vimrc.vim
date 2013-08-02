@@ -395,7 +395,8 @@ set encoding=utf-8
 " Powerline
 set rtp+=~/src/powerline/powerline/bindings/vim
 
-let g:Powerline_theme='short'
-let g:Powerline_colorscheme='solarized256_dark'
+let g:Powerline_theme="skwp"
+let g:Powerline_colorscheme="skwp"
+let g:Powerline_symbols = 'fancy'
 
 " EOF
