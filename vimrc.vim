@@ -30,7 +30,7 @@ filetype indent on
 if has("gui_running")
   "Set the font and size
   "set guifont=Consolas:h18
-  set guifont=Menlo:h18
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h18
   " Hide toolbar
   set guioptions-=T
   " Hide the right scroll bar

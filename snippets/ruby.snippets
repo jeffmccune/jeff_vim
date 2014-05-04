@@ -566,3 +566,23 @@ snippet option
 	  #   # JJM Don't use instance variables
 	  # end
 	end
+snippet desc describe .. do .. end
+	describe "${1:DescribedClass}" do
+	  ${2}
+	end
+snippet cont context .. do .. end
+	context "${1:when foo is true}" do
+	  ${2}
+	end
+snippet it it .. do .. end
+	it "${1:returns :bar}" do
+	  expect(subject).to be_true${2}
+	end
+snippet let let(:foo) do .. end
+	let :${1:foo} do
+	  ${2}
+	end
+snippet subject subject do .. end
+	subject do
+	  described_class.new${1}
+	end
