@@ -247,7 +247,11 @@ snippet ea
 snippet ead
 	each do |${1:e}|
 		${2}
-	end	
+	end
+snippet each each do |i| .. end
+	each do |${1:i}|
+		${2:$1}
+	end${3}
 snippet eab
 	each_byte { |${1:byte}| ${2} }
 snippet eac- each_char { |chr| .. }
@@ -516,22 +520,38 @@ snippet tas
 	  ${3}
 	end
 ## JJM Rspec snippets
-snippet describe
+snippet describe describe .. do .. end
 	describe ${1:Class} do
 	  ${2}
 	end
-snippet let
-	let(:${1:memo_method}) do
-	  ${2:"foo"}
+snippet context context .. do .. end
+	context "${1:when ...}" do
+	  ${2}
 	end
-snippet before
+snippet before before { .. }
+	before { ${1:foo} }${2}
+snippet before before  do .. end
+	before do
+	  ${1}
+	end
+snippet before before :each do .. end
 	before :each do
 	  ${1}
 	end
-snippet it
-	it "${1:should ...\}" do
+snippet before before(:all) { .. }
+	before(:all) { ${1} }${2}
+snippet after after(:all) { .. }
+	after(:all) { ${1} }${2}
+snippet it it { should .. }
+	it { should ${1:have_} }${2}
+snippet it it .. do .. end
+	it "${1:should}" do
 	  ${2}
-	end
+	end${3}
+snippet its its(:foo) { should .. }
+	its(:${1:method}) { should ${2:...} }${3}
+snippet specify specify { should .. }
+	specify { expect(${1:subject}).to ${2:eq foo} }${3}
 snippet face
 	require 'puppet/face'
 	
@@ -550,7 +570,7 @@ snippet action
 	  end
 	end
 snippet pry
-	require 'pry'; binding.pry
+	require 'pry'; binding.pry;
 snippet @opt
 	@option opts [${1:String}] :${2:file} ('${3:SUMMARY_TEMPLATE}') ${4:The template filename}
 snippet @ret
@@ -574,15 +594,27 @@ snippet cont context .. do .. end
 	context "${1:when foo is true}" do
 	  ${2}
 	end
-snippet it it .. do .. end
+snippet it it .. do expect().to .. end
 	it "${1:returns :bar}" do
 	  expect(subject).to be_true${2}
 	end
+snippet let let(:foo) { .. }
+	let(:${1:foo}) { ${2} }
 snippet let let(:foo) do .. end
 	let :${1:foo} do
 	  ${2}
 	end
+snippet let let(:bar) { FactoryGirl.create(:bar) }
+	let(:${1:bar}) { FactoryGirl.create(:${2:$1}) }${3}
 snippet subject subject do .. end
 	subject do
 	  described_class.new${1}
 	end
+snippet subject subject { .. }
+	subject { ${1} }${2}
+snippet expect expect(...).to ...
+	expect(${1:subject}).to ${2}
+snippet	Fac FactorGirl.create(..)
+	FactoryGirl.create(:${1:user})
+snippet ( (..)
+	(${1:arg})${2}
