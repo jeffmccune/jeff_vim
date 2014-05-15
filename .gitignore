@@ -1,3 +1,4 @@
 spell/
 doc/tags*
 .netrwhist
+ruby/command-t/
