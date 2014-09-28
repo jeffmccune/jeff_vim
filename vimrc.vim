@@ -230,6 +230,13 @@ function! AlignFats()
   exe "norm l"
 endfun
 
+function! StripTrailingWhitespace()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfunction
+
 " Remap the personal modifier key (Defaults to '\')
 let mapleader = ","
 "" Map FuzzyFinder to <leader>f
