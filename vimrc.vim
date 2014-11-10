@@ -387,6 +387,7 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 " Map a :make to a command to make it easier to run.
 map <Leader>j :RelatedSpecMake<CR>
+
 nnoremap <silent> <C-r> :RelatedSpecVOpen<CR>
 nnoremap <silent> ,<C-r> :RelatedSpecOpen<CR>
 
@@ -400,10 +401,11 @@ autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 set encoding=utf-8
 
 " Powerline
-set rtp+=~/src/powerline/powerline/bindings/vim
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
-let g:Powerline_theme="skwp"
-let g:Powerline_colorscheme="skwp"
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'short'
 
 " EOF
