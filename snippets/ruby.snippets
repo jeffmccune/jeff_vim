@@ -56,6 +56,10 @@ snippet def def .. end
 	def ${5:$1}(${6:$3})
 	  ${7}
 	end
+snippet def @property_flush[:prop] = value
+	def ${1:some_property}=(value)
+	  @property_flush[:$1] = value
+	end${2}
 snippet defp def .. end
 	##
 	# ${1:method_name}
@@ -633,3 +637,13 @@ snippet	Fac FactorGirl.create(..)
 	FactoryGirl.create(:${1:user})
 snippet ( (..)
 	(${1:arg})${2}
+snippet Not NotImplementedError
+	fail NotImplementedError, '${1:not implemented}'$2
+snippet allow allow(foo).to receive(:bar)
+	allow(${1:object}).to receive(:${2:message})
+snippet expect expect(foo).to receive(:bar).with
+	expect(${1:object}).to receive(:${2:message}).with(${3:*})
+snippet save fit 'saves the subject' do .. end
+	fit 'saves the subject' do
+	  Fixtures.save(:${1:some_api_call}, subject)
+	end
