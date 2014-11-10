@@ -1,17 +1,46 @@
+" Find the project directory for this file, may differ from the current
+" working directory.
+function! ProjectDirectory()
+  let l:fullpath = expand("%:p")
+  let l:filepath = expand("%:h")
+  let l:fname = expand("%:t")
+  let l:check = fnamemodify(expand(l:fullpath), ":h")
+  let l:indicators = [ "spec/spec_helper.rb", ".git/HEAD", "Gemfile", ".bundle/config" ]
+  while l:check != "/"
+    for indicator in l:indicators
+      if filereadable(l:check . "/" . indicator)
+        return l:check
+      end
+    endfor
+    let l:check = fnamemodify(expand(l:check), ":h")
+  endwhile
+  return l:filepath
+endfunction
+
 " Find the related spec for any file you open.
 function! RelatedSpec()
   let l:fullpath = expand("%:p")
   let l:filepath = expand("%:h")
   let l:fname = expand("%:t")
 
+  let l:project_dir = ProjectDirectory()
+
+  " Trim these prefixes
+  let l:fullpath_prefixes = [l:project_dir]
+  let l:project_prefixes = ["lib", "app"]
+
   " Trim off common prefixes
-  let l:filepath_trim = l:filepath
-  let l:filepath_trim = substitute(l:filepath_trim, "^lib$", "", "")
-  let l:filepath_trim = substitute(l:filepath_trim, "^lib/puppet", "", "")
-  let l:filepath_trim = substitute(l:filepath_trim, "^lib/facter", "", "")
-  let l:filepath_trim = substitute(l:filepath_trim, "^lib/", "", "")
-  let l:filepath_trim = substitute(l:filepath_trim, "^app$", "", "")
-  let l:filepath_trim = substitute(l:filepath_trim, "^app/", "", "")
+  let l:filepath_trim = l:fullpath
+
+  for fp_prefix in l:fullpath_prefixes
+    for pr_prefix in l:project_prefixes
+      let l:filepath_trim = substitute(l:filepath_trim, "^" . fp_prefix . "/" . pr_prefix . "$", "", "")
+      let l:filepath_trim = substitute(l:filepath_trim, "^" . fp_prefix . "/" . pr_prefix . "/", "", "")
+    endfor
+  endfor
+
+  " Get the dirname of the trimmed file path
+  let l:filepath_trim = fnamemodify(expand(l:filepath_trim), ":h")
 
   " Possible names for the spec/test for the file we're looking at
   let l:test_names = [substitute(l:fname, ".rb$", "_spec.rb", ""), substitute(l:fname, ".rb$", "_test.rb", "")]
@@ -21,10 +50,9 @@ function! RelatedSpec()
 
   for test_name in l:test_names
     for path in l:test_paths
-      let l:spec_path = path . "/" . l:filepath_trim . "/" . test_name
-      let l:full_spec_path = substitute(l:fullpath, l:filepath . "/" . l:fname, l:spec_path, "")
+      let l:spec_path = l:project_dir . "/" . path . "/" . l:filepath_trim . "/" . test_name
       if filereadable(l:spec_path)
-        return l:full_spec_path
+        return l:spec_path
       end
     endfor
   endfor
