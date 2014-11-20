@@ -647,3 +647,5 @@ snippet save fit 'saves the subject' do .. end
 	fit 'saves the subject' do
 	  Fixtures.save(:${1:some_api_call}, subject)
 	end
+snippet nie fail NotImplementedError
+	fail NotImplementedError, '${1:not implemented}'${2}

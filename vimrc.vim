@@ -408,4 +408,7 @@ python del powerline_setup
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
 
+" Set a highlight at column 80
+set colorcolumn=80
+
 " EOF
